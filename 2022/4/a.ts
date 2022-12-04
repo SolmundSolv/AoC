@@ -5,25 +5,23 @@ const floorRange = floor.map((line) => line.map((tile) => tile.split("-")));
 
 // console.log(floorRange);
 
-let overlap = false;
 let sum = 0;
-let one = " ";
-let two = " ";
 
-// console.log(floorRange[999][1][0]);
 for (let i = 0; i < lines.length; i++) {
-    for (let k = parseInt(floorRange[i][0][0]); k <= parseInt(floorRange[i][0][1]); k++) {
-        one += k.toString() + ", ";
+    const range = lines[i].split(",");
+    const first = range[0].split("-");
+    const second = range[1].split("-");
+    const startFrist = parseInt(first[0]);
+    const endFrist = parseInt(first[1]);
+    const startSecond = parseInt(second[0]);
+    const endSecond = parseInt(second[1]);
+
+    if (
+        (startFrist <= startSecond && endSecond <= endFrist) ||
+        (startSecond <= startFrist && endFrist <= endSecond)
+    ) {
+        sum++;
     }
-    for (let k = parseInt(floorRange[i][1][0]); k <= parseInt(floorRange[i][1][1]); k++) {
-        two += k.toString() + ", ";
-    }
-    //check if one string contains the other
-    if (one.includes(two) || two.includes(one)) {
-        sum += 1;
-    }
-    one = " ";
-    two = " ";
 }
 console.log("1. " + sum);
 sum = 0;
