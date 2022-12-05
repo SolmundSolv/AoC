@@ -66,7 +66,9 @@ for (let i = 0; i < firstHalfLines.length; i++) {
     const secondHalfLineChars = secondHalfLine.split("");
     const firstHalfLineCharsSet = new Set(firstHalfLineChars);
     const secondHalfLineCharsSet = new Set(secondHalfLineChars);
-    const intersection = new Set([...firstHalfLineCharsSet].filter((x) => secondHalfLineCharsSet.has(x)));
+    const intersection = new Set(
+        [...firstHalfLineCharsSet].filter((x) => secondHalfLineCharsSet.has(x))
+    );
     sum += numberMap.get(intersection.values().next().value);
     // console.log(numberMap.get(intersection.values().next().value));
 }
