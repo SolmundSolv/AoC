@@ -1,8 +1,7 @@
 const input = Deno.readTextFileSync("input.txt");
-const moves = input.split("\n").map((line) => line.split(" "));
+const moves = input.split(/\r?\n/).map((line) => line.split(" "));
 // console.log(moves);
 //create array andn fill it with [0,0]
-let shortSnake = Array.from({ length: 2 }, () => [0, 0]);
 let longSnake = Array.from({ length: 10 }, () => [0, 0]);
 const tailsWitchTailTouch1: number[][] = [];
 const tailsWitchTailTouch2: number[][] = [];
